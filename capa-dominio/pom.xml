@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ifes.conti.p2tpe01</groupId>
+    <artifactId>p2tpe01</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>capa-dominio</artifactId>
+  <dependencies>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-rdbms</artifactId>
+			<version>[5.0.0-m1, 5.9)</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-jdo-query</artifactId>
+			<version>[5.0.9, )</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+
+					<generatedSourcesDirectory>${project.basedir}/src/main/java</generatedSourcesDirectory>
+
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.datanucleus</groupId>
+				<artifactId>datanucleus-maven-plugin</artifactId>
+				<version>5.0.0-release</version>
+				<configuration>
+					<api>JDO</api>
+
+					<persistenceUnitName>PostgreSQL</persistenceUnitName>
+
+					<log4jConfiguration>${project.basedir}/src/main/resources/log4j.properties</log4jConfiguration>
+
+					<verbose>true</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>enhance</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

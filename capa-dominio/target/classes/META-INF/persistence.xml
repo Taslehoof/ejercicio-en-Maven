@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+  
+  <persistence-unit name="PostgreSQL">
+  	<class>dominio.Ubicacion</class>
+  	<class>dominio.Taller</class>
+  	<class>dominio.ServicioGrua</class>
+  	<class>dominio.Vehiculo</class>
+  	<class>dominio.Automovil</class>
+  	<class>dominio.Camioneta</class>
+  	<class>dominio.Motocicleta</class>
+  	<class>dominio.Propietario</class>
+    <exclude-unlisted-classes/>
+    <properties>
+      <property name="javax.jdo.option.ConnectionURL" value="jdbc:postgresql://localhost/p2tpe01"/>
+      <property name="javax.jdo.option.ConnectionDriverName" value="org.postgresql.Driver"/>
+      <property name="javax.jdo.option.ConnectionUserName" value="sconti"/>
+      <property name="javax.jdo.option.ConnectionPassword" value="ate871tone357"/>
+      
+      <property name="datanucleus.schema.autoCreateAll" value="true"/>
+      
+      <property name="javax.jdo.option.DetachAllOnCommit" value="true"/>
+      <property name="datanucleus.maxFetchDepth" value="-1"/>
+      
+    </properties>
+  </persistence-unit>
+</persistence>
